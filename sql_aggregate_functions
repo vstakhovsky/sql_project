@@ -1,0 +1,91 @@
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */ 
+
+CREATE TABLE apps (
+    id INTEGER,
+    name CHAR(20), 
+    category CHAR(20), 
+    downloads INTEGER,
+    price REAL 
+    ); 
+    
+INSERT INTO apps VALUES (3, "siliconphase", "Productivity", 17193, 0.0); 
+INSERT INTO apps VALUES (6, "Donzolab", "Education", 4259, 0.99); 
+INSERT INTO apps VALUES (10, "Ittechi", "Reference", 3874, 0.0); 
+INSERT INTO apps VALUES (13, "Subdrill", "Education", 7132, 1.99); 
+INSERT INTO apps VALUES (14, "Anzoom", "Health", 6941, 14.99); 
+INSERT INTO apps VALUES (21, "kanity", "Health", 2299, 0.0); 
+INSERT INTO apps VALUES (25, "Zathcare", "Books", 16281, 2.99);
+INSERT INTO apps VALUES (30, "Basecode", "Sports", 21203, 3.99); 
+INSERT INTO apps VALUES (45, "Hayholding", "Medical", 15845, 14.99); 
+INSERT INTO apps VALUES (59, "Saliflex", "Productivity", 21984, 0.99); 
+INSERT INTO apps VALUES (60, "waretam", "Catalogs", 31087, 2.99); 
+INSERT INTO apps VALUES (62, "Donelectrics", "News", 6650, 1.99); 
+INSERT INTO apps VALUES (81, "sonelectrics", "Entertainment", 9297, 1.99); 
+INSERT INTO apps VALUES (89, "Zoodom", "Food", 29719, 14.99); 
+INSERT INTO apps VALUES (94, "Quohouse", "Lifestyle", 4109, 0.0); 
+INSERT INTO apps VALUES (95, "Quotech", "Health", 24934, 0.0); 
+INSERT INTO apps VALUES (104, "Funtexon", "Utilities", 11229, 0.99); 
+INSERT INTO apps VALUES (108, "Ozerphase", "Navigation", 14881, 0.0); 
+INSERT INTO apps VALUES (109, "Kintonflex", "Catalogs", 28705, 0.0); 
+INSERT INTO apps VALUES (110, "Tamptom", "Education", 5918, 2.99); 
+INSERT INTO apps VALUES (122, "Whitetexon", "Games", 30959, 0.0); 
+INSERT INTO apps VALUES (123, "Lanela", "Business", 21116, 1.99);  
+INSERT INTO apps VALUES (126, "Ozerquote", "Lifestyle", 19422, 3.99); 
+INSERT INTO apps VALUES (128, "Unosantech", "Finance", 15659, 0.99); 
+INSERT INTO apps VALUES (130, "Canplus", "Lifestyle", 22923, 1.99); 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */ 
+
+/* TOTAL APPS IN THE DATABASE */ 
+SELECT COUNT(*) 
+FROM apps; 
+
+/* Calculate the total number of free apps in the database */ 
+SELECT COUNT(*) 
+FROM apps
+WHERE price = 0; 
+
+/* Calculate the total number of apps at each price point */ 
+SELECT price, COUNT(*) 
+FROM apps
+GROUP BY price; 
+
+/* TOTAL number of downloads for all apps */
+SELECT SUM(downloads)
+FROM apps; 
+
+/* TOTAL number of downloads for each category */ 
+SELECT category, SUM(downloads) 
+FROM apps
+GROUP BY category; 
+
+/* Downloads for the most popular app */ 
+SELECT MAX(downloads)
+FROM apps; 
+
+/* The names of the most downloaded apps in each category */
+SELECT name, category, MAX(downloads)
+FROM apps
+GROUP BY category; 
+
+/* The least number of times an app has been downloaded */ 
+SELECT MIN(downloads) 
+FROM apps; 
+
+/* Apps with the least downloads for each category */ 
+SELECT name, category, MIN(downloads)
+FROM apps
+GROUP BY category; 
+
+/* Average number of downloads at each price */ 
+SELECT price, AVG(downloads)
+FROM apps
+GROUP BY price; 
+
+/* Average number of downloads at each price 
+rounded to 2 decimal places */ 
+SELECT price, ROUND(AVG(downloads), 2)
+FROM apps
+GROUP BY price; 
+ 
+
+
