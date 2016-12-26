@@ -1,6 +1,6 @@
 /* Analyzing Business Metrics via SQL*/ 
 
-/* Rank the most popular platforms from highest to lowest gameplays*/
+/* Rank the most popular platforms from highest to lowest gameplays */
 SELECT platform, COUNT(platform) 
 FROM gameplays 
 GROUP BY platform 
@@ -14,11 +14,11 @@ FROM purchases
 GROUP BY 1
 ORDER BY 1;
 
-/* Calculate the average price of a purchase*/
+/* Calculate the average price of a purchase */
 SELECT ROUND(AVG(price),2)
 FROM purchases; 
 
-/* Calculate the average revenue per platform*/
+/* Calculate the average revenue per platform */
 SELECT platform, AVG(price) 
 FROM purchases AS P, gameplays AS G 
 WHERE P.user_id = G.user_id 
@@ -33,8 +33,7 @@ GROUP BY 1
 ORDER BY 1;
 
 /* Calculate Daily ARPPU - Average Revenue per Purchasing User */
-/* Daily ARPPU is defined as the sum of revenue divided by the 
-number of purchasers per day */ 
+/* Daily ARPPU is defined as the sum of revenue divided by the number of purchasers per day */ 
 SELECT 
   DATE(created_at),
   ROUND(SUM(price)/ COUNT(DISTINCT user_id), 2) 
