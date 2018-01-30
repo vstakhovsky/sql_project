@@ -4,7 +4,7 @@ USE superstore_schema;
 
 DROP TABLE IF EXISTS Orders; 
 
-CREATE TABLE IF NOT EXISTS Accommodation
+CREATE TABLE IF NOT EXISTS orders 
 (
   row_id varchar(255),
   order_id varchar(255), 
